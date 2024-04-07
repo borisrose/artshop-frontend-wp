@@ -1,0 +1,6 @@
+@use '../base/variables';
+
+.title-header {
+    padding: 5px 10px;
+    background-color: variables.$title-color;
+}

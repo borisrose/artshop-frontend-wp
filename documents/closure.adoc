@@ -1,0 +1,11 @@
+= Une closure
+
+== Définition
+
+Une closure en JavaScript est une fonction qui se "souvient" de l'environnement dans lequel elle a été créée, même après que cet environnement ait cessé d'exister. 
+
+=== ...
+Cela signifie que la fonction a accès aux variables déclarées dans la portée externe dans laquelle elle a été définie, même si cette portée externe n'est plus active. 
+
+=== ...
+Les closures sont couramment utilisées pour créer des fonctions avec un état persistant ou pour créer des fonctions qui retournent d'autres fonctions.

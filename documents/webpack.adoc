@@ -1,0 +1,49 @@
+= Webpack
+
+== Definition
+
+Webpack is a static module bundler for modern JavaScript applications. 
+
+=== ...
+When webpack processes your application, it internally builds a dependency graph from one or more entry points and then combines every module your project needs into one or more bundles, which are static assets to serve your content from.
+
+== Source Maps  
+
+When webpack bundles your source code, it can become difficult to track down errors and warnings to their original location. 
+
+
+For example, if you bundle three source files (a.js, b.js, and c.js) into one bundle (bundle.js) and one of the source files contains an error, the stack trace will point to bundle.js. 
+
+
+This isn't always helpful as you probably want to know exactly which source file the error came from.
+
+In order to make it easier to track down errors and warnings, JavaScript offers source maps, which map your compiled code back to your original source code. If an error originates from b.js, the source map will tell you exactly that.
+
+There are a lot of different options available when it comes to source maps. Be sure to check them out so you can configure them to your needs.
+
+=== ...
+
+Let's use the inline-source-map option, which is good for illustrative purposes.
+
+
+== Plugins
+
+
+=== Introduction
+
+Plugins are the backbone of webpack. 
+
+=== ...
+Webpack itself is built on the same plugin system that you use in your webpack configuration
+
+=== ...
+They also serve the purpose of doing anything else that a loader cannot do. 
+
+=== ...
+Webpack provides many such plugins out of the box.
+
+=== Definition
+
+A webpack plugin is a JavaScript object that has an apply method. 
+
+This apply method is called by the webpack compiler, giving access to the entire compilation lifecycle.

@@ -1,0 +1,6 @@
+= Typescript
+TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. 
+
+== d.ts
+
+To use non-code assets with TypeScript, we need to defer the type for these imports. This requires a custom.d.ts file which signifies custom definitions for TypeScript in our project. 
