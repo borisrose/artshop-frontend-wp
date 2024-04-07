@@ -4,8 +4,9 @@ import { ProductInterface } from "../interfaces/ProductInterface";
 export class ProductService {
 
     static async getProducts(): Promise<Array<ProductInterface>> {
-        const { getData, getFormattedData } = await useFetch()
-        await getData("toml", true)
+        const { setUrl, getData, getFormattedData } = await useFetch()
+        setUrl("http://localhost:3000/local-products")
+        await getData("json", false)
         return getFormattedData()
     }
 

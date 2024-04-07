@@ -64,6 +64,45 @@ ul, li {
   border-radius: 50%;
 }
 
+.cube-component {
+  transform-style: preserve-3d;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100px;
+  transform: rotateX(45deg) rotateY(45deg);
+}
+.cube-component .face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.cube-component .face--front {
+  transform: translateZ(50px);
+}
+.cube-component .face--back {
+  transform: rotateY(180deg) translateZ(50px);
+}
+.cube-component .face--top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.cube-component .face--bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+.cube-component .face--right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.cube-component .face--left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
 .nav-li {
   margin-inline: 10px;
 }
@@ -79,12 +118,19 @@ ul, li {
   width: 100vw;
 }
 
+#landing-cube-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .gallery__main {
   flex-direction: column;
 }
 
 #gallery-products-container {
   display: flex;
+  flex-wrap: wrap;
 }
 @media (0 <= width <= 714px) {
   #gallery-products-container {

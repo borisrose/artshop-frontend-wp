@@ -1,7 +1,5 @@
 import json5Products from '../../data/products.json5';
 import jsonProducts from '../../data/products.json';
-import csvProducts from '../../data/products.csv';
-import xmlProducts from '../../data/products.xml';
 import yamlProducts from '../../data/products.yaml';
 import tomlProducts from '../../data/products.toml';
 
@@ -9,7 +7,7 @@ import tomlProducts from '../../data/products.toml';
 export const useFetch = async () => {
 
     let url: string;
-    let formattedData:any= [];
+    let formattedData: any = [];
 
 
     function getFormattedData() {
@@ -39,7 +37,6 @@ export const useFetch = async () => {
     async function getData(type: string, isConverted: boolean): Promise<void> {
 
         try {
-          
 
             if (type == "json5") {
 
