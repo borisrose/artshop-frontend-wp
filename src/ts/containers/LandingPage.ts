@@ -1,5 +1,6 @@
 import { PALETTE_ICON } from "../constants/fontawesome";
 import { MyHtmlFactory } from "../factory/MyHtmlFactory";
+import { PubSubService } from "../services/PubSubService";
 
 export class LandingPage {
     onNavigate: (path: string) => void;
@@ -11,6 +12,9 @@ export class LandingPage {
 
         HEADER_NAV.appendChild(liElement)
         liElement.appendChild(anchorElement)
+
+        const pubSubService = new PubSubService()
+      
     }
 
 

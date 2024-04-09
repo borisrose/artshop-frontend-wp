@@ -1,0 +1,38 @@
+name: manual-workflow
+on:
+  workflow_call:
+    inputs:
+      build_id:
+        required: true
+        type: number
+      deploy_target:
+        required: true
+        type: string
+      perform_deploy:
+        required: true
+        type: boolean
+    outputs:
+      feedback: 
+        description: "the feedback from the message job"
+        value: ${{ jobs.message.outputs.feedback }}
+jobs:
+  message:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, window-latest]
+    outputs:
+      feedback: ${{ steps.write_message_step.outputs.content }}
+    steps:
+      - name: inputs-steps
+        id: inputs_step
+        run: |
+          echo "${{inputs.build_id}} ${{ inputs.deploy_target}} ${{inputs.perform_deploy}}"
+      - name: write-message-step
+        if: ${{ !cancelled() }}
+        id: write_message_step
+        run: |
+          echo "content=🎉This is the message" >> $GITHUB_OUTPUT
+      - name: done-step
+        run: |
+          echo "job-status : ${{ job.status }} "

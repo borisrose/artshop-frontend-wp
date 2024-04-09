@@ -1,0 +1,25 @@
+= Github
+
+The uses keyword specifies that this step will run v4 of the actions/checkout action. 
+
+This is an action that checks out your repository onto the runner, allowing you to run scripts or other actions against your code (such as build and test tools). 
+
+You should use the checkout action any time your workflow will use the repository's code.
+
+
+== Fonctions de vérification d'état 
+
+Vous pouvez utiliser les fonctions de vérification d’état suivantes en tant qu’expressions dans les conditions if. 
+
+
+Une vérification d’état par défaut de success() est appliquée, sauf si vous incluez l’une de ces fonctions. 
+
+
+== Le contexte github
+
+
+Le contexte github contient des informations sur l’exécution du workflow et l’événement qui a déclenché cette exécution. 
+
+
+Vous pouvez également lire la plupart des données du contexte github dans les variables d’environnement. Pour plus d’informations sur les variables d’environnement, consultez « Variables ».
+

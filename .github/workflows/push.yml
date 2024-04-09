@@ -1,14 +1,57 @@
 name: push-workflow
-run-name: ${{github.actor}} is pushing to remote main
+run-name: ${{github.actor}} is runnung the push-workflow
 on:
   push:
-    branches: ['master']
+    branches: ["master"]
+env:
+  author: Boris Rose
 jobs:
-  first-job:
-    runs-on: ubuntu-latest
+  installation:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [14, 16, 20]
     steps:
-        - name: first-step
-          run: |
-            echo "First step is running"
-
-
+      - name: launch-step
+        run: |
+          echo "Hello ${{ fromJSON(env.author)}} I am on it : the next step is coming"
+      - name: verify-event-step
+        run: |
+          echo "is a push event :" ${{ contains(fromJSON('["push"]'), github.event_name)}}
+      - name: checkout-action-step
+        uses: actions/checkout@v4
+      - name: setup-node-step
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: install-deps-step
+        run: npm install
+  results:
+    needs: [installation]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14, 16, 20]
+    steps:
+      - name: success-block-step
+        if: ${{ success() }}
+        run: |
+          echo Success 🎉
+      - name: failure-block-step
+        if: ${{ failure() }}
+        run: |
+          echo Failure ❌
+  problem:
+    needs: [installation, results]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+    steps:
+      - name: no-cancellation-step
+        if: ${{ !cancelled() }}
+        run: |
+          echo "No problem occurred during the WF run"
