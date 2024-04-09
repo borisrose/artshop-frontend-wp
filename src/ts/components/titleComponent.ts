@@ -1,10 +1,8 @@
 export default function (content: string): string {
-    return (
-        `
+  return `
             <header class="title-header">
                 ${content}
             </header>
         
-        `
-    )
+        `;
 }

@@ -1,10 +1,8 @@
 export default function (data: { content: string }): string {
-    return (
-        `
+  return `
             <aside>
                 <p> ${data.content} </p>
             </aside>
         
-        `
-    )
+        `;
 }

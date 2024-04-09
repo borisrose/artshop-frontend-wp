@@ -1,7 +1,5 @@
-export default function():string{
-
-    return(
-        `
+export default function (): string {
+  return `
             <div aria-label="Star Animation of the landing page of ArtShop" class="cube-component">
             
                 <div class="face face--left"></div>
@@ -13,7 +11,5 @@ export default function():string{
             </div>
         
         
-        `
-    )
-
+        `;
 }

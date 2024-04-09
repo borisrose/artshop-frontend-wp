@@ -1,8 +1,7 @@
-import Logo from "./wreath.png"
+import Logo from "./wreath.png";
 
-export default function(){
-    return(
-        `
+export default function () {
+  return `
             <header class="header">
                 <figure>
                     <img src=${Logo} alt="Logo de ArtShop">
@@ -11,6 +10,5 @@ export default function(){
                 </nav>
             </header>
         
-        `
-    )
+        `;
 }
