@@ -22,7 +22,6 @@ jobs:
           cache: npm
       - name: Install Dependencies
         run: |
-          echo: "$(tput setaf 3) ================ $(tput setaf 0)"
           npm ci
         shell: bash
       - name: Run Prettier Check
