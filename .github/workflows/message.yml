@@ -33,7 +33,7 @@ jobs:
         if: ${{ env.for == 'myself' }}
         run: |
           echo "This is for you"
-          echo "message=${{ env.stack }}" >> $GITHUB_OUTPUT"
+          echo "message=${{ env.stack }}" >> $GITHUB_OUTPUT
       - name: step-one
         id: step_one
         if: ${{ !cancelled() && env.for != 'myself' }}
