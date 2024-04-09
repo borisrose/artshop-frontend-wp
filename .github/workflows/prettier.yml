@@ -26,7 +26,7 @@ jobs:
         shell: bash
       - name: Run Prettier Check
         run: |
-          prettier ./src --check
+          npx prettier ./src --check
       - if: ${{ !cancelled() && success() }}
         run: |
           echo "🎉 ALL RIGHT"
