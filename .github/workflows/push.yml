@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   workflow_call:
 env:
-  author: Boris Rose
+  AUTHOR: Boris Rose
 jobs:
   installation:
     runs-on: ${{ matrix.os }}
@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: launch-step
         run: |
-          echo "Hello ${{ fromJSON(env.author)}} I am on it : the next step is coming"
+          echo "Hello ${{ fromJSON(env.AUTHOR)}} I am on it : the next step is coming"
       - name: verify-event-step
         run: |
           echo "is a push event :" ${{ contains(fromJSON('["push"]'), github.event_name)}}

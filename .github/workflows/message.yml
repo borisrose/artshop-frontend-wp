@@ -13,8 +13,8 @@ on:
         description: "Output Data"
         value: ${{ jobs.list_job.outputs.data }}
 env:
-  for: myself
-  stack: "ga,wp,es,pr,ja,js,py,sh"
+  FOR: myself
+  STACK: "ga,wp,es,pr,ja,js,py,sh"
 
 jobs:
   list_job:
@@ -31,12 +31,12 @@ jobs:
         run: node --version
       - name: my-step-one
         id: my_step
-        if: ${{ env.for == 'myself' }}
+        if: ${{ env.FOR == 'myself' }}
         run: |
           echo "This is for you"
-          echo "message=${{ env.stack }}" >> $GITHUB_OUTPUT
+          echo "message=${{ env.STACK }}" >> $GITHUB_OUTPUT
       - name: step-one
         id: step_one
-        if: ${{ !cancelled() && env.for != 'myself' }}
+        if: ${{ !cancelled() && env.FOR != 'myself' }}
         run: |
           echo "Impossible"
