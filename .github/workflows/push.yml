@@ -28,14 +28,14 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: install-deps-step
         run: npm install
-      - name: run-the-app
-        run: npm run start
+      - name: build the app
+        run: npm run build
       - if: ${{ success() }}
         run: |
-          echo "🎉 The app ran successfully"
+          echo "🎉 The app build successfully"
       - if: ${{ failure() }}
         run: |
-          echo "Failure while running the app"
+          echo "Failure while building the app"
       - if: ${{ !cancelled() }}
         run: |
           echo "end of the workflow"
