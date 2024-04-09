@@ -22,7 +22,7 @@ jobs:
           cache: npm
       - name: Install Dependencies
         run: |
-          npm ci
+          npm install
         shell: bash
       - name: Run Prettier Check
         run: |
