@@ -3,6 +3,7 @@ run-name: ${{github.actor}} is runnung the push-workflow
 on:
   push:
     branches: ["master"]
+  workflow_call:
 env:
   author: Boris Rose
 jobs:
