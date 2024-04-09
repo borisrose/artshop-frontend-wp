@@ -3,6 +3,7 @@ run-name: ${{github.actor}} is runnung the push-workflow
 on:
   push:
     branches: ["master"]
+  workflow_dispatch:
   workflow_call:
 env:
   author: Boris Rose
@@ -12,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [14, 16, 20]
+        node: [14]
     steps:
       - name: launch-step
         run: |
@@ -34,7 +35,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14, 16, 20]
+        node: [14]
     steps:
       - name: success-block-step
         if: ${{ success() }}

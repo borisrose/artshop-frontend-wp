@@ -1,0 +1,33 @@
+name: jest-workflow
+run-name: ${{ github.actor }} is running the jest test
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      message:
+        value: ${{ jobs.done-job.outputs.message}}
+env:
+  TITLE: Jest Test
+jobs:
+  test-job:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [14, 18]
+    steps:
+      - name: node-installation
+        uses: actions/setup-node@v4
+
+  done-job:
+    needs: [test-job]
+    runs-on: ubuntu-latest
+    outputs:
+      message: ${{ steps.single_done_step.outputs.message }}
+    steps:
+      - name: single-done-step
+        id: single_done_step
+        run: |
+          echo "message=🎉Success of the Jest Test" >> $GITHUB_OUTPUT
