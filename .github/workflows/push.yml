@@ -28,31 +28,16 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: install-deps-step
         run: npm install
-  results:
-    needs: [installation]
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
-    steps:
-      - name: success-block-step
-        if: ${{ success() }}
+      - name: run-the-app
+        run: npm run start
+      - if: ${{ success() }}
         run: |
-          echo Success 🎉
-      - name: failure-block-step
-        if: ${{ failure() }}
+          echo "🎉 The app ran successfully"
+      - if: ${{ failure() }}
         run: |
-          echo Failure ❌
-  problem:
-    needs: [installation, results]
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
-    steps:
-      - name: no-cancellation-step
-        if: ${{ !cancelled() }}
+          echo "Failure while running the app"
+      - if: ${{ !cancelled() }}
         run: |
-          echo "No problem occurred during the WF run"
+          echo "end of the workflow"
+
+ 

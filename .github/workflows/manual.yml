@@ -1,6 +1,16 @@
 name: manual-workflow
 on:
   workflow_dispatch:
+    inputs:
+      build_id:
+        required: true
+        type: number
+      deploy_target:
+        required: true
+        type: string
+      perform_deploy:
+        required: true
+        type: boolean
   workflow_call:
     inputs:
       build_id:
@@ -21,7 +31,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, window-latest]
+        os: [ubuntu-latest, windows-latest]
     outputs:
       feedback: ${{ steps.write_message_step.outputs.content }}
     steps:
