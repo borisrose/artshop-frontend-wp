@@ -1,3 +1,10 @@
+@use "sass:map";
+
+
+$cube-face-side:100px;
+$vars: ("side": $cube-face-side, "distance": 200px);
+
+
 .cube-component {
   transform-style: preserve-3d;
   position: relative;
@@ -5,36 +12,114 @@
   align-items: center;
   justify-content: center;
   margin: 100px;
-  transform: rotateX(45deg) rotateY(45deg);
+  animation: cube-anim 100ms ease-in-out forwards;
+
+  @keyframes cube-anim {
+    from {
+      transform: rotateX(90deg) rotateY(90deg);
+    }
+    to {
+      transform: rotateX(-20deg) rotateY(-30deg);
+    }
+  }
 
   .face {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: rgba(255, 255, 255, 0.8);
+    width: map.get($vars, "side");
+    height: map.get($vars, "side");
     border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    background-position: center;
+    background-size: cover;
     &--front {
-      transform: translateZ(50px);
+      background-image: url(https://cdn.pixabay.com/photo/2024/02/17/13/21/candy-town-8579300_1280.jpg);
+
+      @keyframes cube-face-anim-front {
+        from {
+          transform: translateZ(100px);
+        }
+
+        to {
+          transform: translateZ(50px);
+        }
+      }
+      animation-name: cube-face-anim-front;
     }
     &--back {
-      transform: rotateY(180deg) translateZ(50px);
+      background-image: url(https://cdn.pixabay.com/photo/2021/05/14/22/11/faces-6254573_1280.jpg);
+      @keyframes cube-face-anim-back {
+        from {
+          transform: rotateY(180deg) translateZ(map.get($vars, "distance"));
+        }
+
+        to {
+          transform: rotateY(180deg) translateZ(50px);
+        }
+      }
+
+      animation-name: cube-face-anim-back;
     }
     &--top {
-      transform: rotateX(90deg) translateZ(50px);
+      background-image: url(https://cdn.pixabay.com/photo/2024/01/04/15/42/sailing-8487722_1280.png);
+
+      @keyframes cube-face-anim-top {
+        from {
+          transform: rotateX(90deg) translateZ(map.get($vars, "distance"));
+        }
+
+        to {
+          transform: rotateX(90deg) translateZ(50px);
+        }
+      }
+      animation-name: cube-face-anim-top;
     }
     &--bottom {
-      transform: rotateX(-90deg) translateZ(50px);
+      background-image: url(https://cdn.pixabay.com/photo/2023/05/23/23/58/moth-8013718_1280.jpg);
+
+      @keyframes cube-face-anim-bottom {
+        from {
+          transform: rotateX(-90deg) translateZ(map.get($vars, "distance"));
+        }
+
+        to {
+          transform: rotateX(-90deg) translateZ(50px);
+        }
+      }
+      animation-name: cube-face-anim-bottom;
     }
     &--right {
-      transform: rotateY(90deg) translateZ(50px);
+      background-image: url(https://cdn.pixabay.com/photo/2018/08/19/07/05/background-3616101_1280.jpg);
+
+      @keyframes cube-face-anim-right {
+        from {
+          transform: rotateY(90deg) translateZ(map.get($vars, "distance"));
+        }
+
+        to {
+          transform: rotateY(90deg) translateZ(50px);
+        }
+      }
+      animation-name: cube-face-anim-right;
     }
     &--left {
-      transform: rotateY(-90deg) translateZ(50px);
+      background: url(https://cdn.pixabay.com/photo/2021/12/02/02/58/crane-6839511_1280.jpg);
+
+      @keyframes cube-face-anim-left {
+        from {
+          transform: rotateY(-90deg) translateZ(map.get($vars, "distance"));
+        }
+
+        to {
+          transform: rotateY(-90deg) translateZ(50px);
+        }
+      }
+      animation-name: cube-face-anim-left;
     }
   }
 }

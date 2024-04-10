@@ -31,11 +31,11 @@ const routes = {
 
 declare global {
   interface Window {
-    onNavigate: (path: string) => void;
+    onNavigate: (path: string, hash:string) => void;
   }
 }
 
-window.onNavigate = (path: string) => {
+window.onNavigate = (path: string,hash:string) => {
   router(false, path, hash);
 };
 

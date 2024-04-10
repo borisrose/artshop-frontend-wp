@@ -4,8 +4,8 @@ import { ProductInterface } from "../interfaces/ProductInterface";
 import { ProductService } from "../services/ProductService";
 
 export class GalleryPage {
-  onNavigate: (path: string) => void;
-  constructor(onNavigate: (path: string) => void) {
+  onNavigate: (path: string, hash:string) => void;
+  constructor(onNavigate: (path: string, hash:string) => void) {
     this.onNavigate = onNavigate;
     const HEADER_NAV = document.getElementById("header-nav");
     const liElement = MyHtmlFactory.createLi("home-li", "nav-li").element;

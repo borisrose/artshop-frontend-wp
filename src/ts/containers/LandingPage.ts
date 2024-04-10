@@ -3,8 +3,8 @@ import { MyHtmlFactory } from "../factory/MyHtmlFactory";
 import { PubSubService } from "../services/PubSubService";
 
 export class LandingPage {
-  onNavigate: (path: string) => void;
-  constructor(onNavigate: (path: string) => void) {
+  onNavigate: (path: string, hash:string) => void;
+  constructor(onNavigate: (path: string, hash:string) => void) {
     this.onNavigate = onNavigate;
     const HEADER_NAV = document.getElementById("header-nav");
     const liElement = MyHtmlFactory.createLi("gallery-li", "nav-li").element;
@@ -17,7 +17,12 @@ export class LandingPage {
 
     HEADER_NAV.appendChild(liElement);
     liElement.appendChild(anchorElement);
+    const DISCOVER_BUTTON = document.getElementById("discover-button")
+    DISCOVER_BUTTON.onclick = () => this.onDiscoverClick()
+    new PubSubService();
+  }
 
-    const pubSubService = new PubSubService();
+  onDiscoverClick(){
+    this.onNavigate("","#gallery")
   }
 }
